@@ -23,4 +23,9 @@ class AuthController extends AppController
             }
         }
     }
+
+    public function isAuthorized()
+    {
+        return true;
+    }
 }

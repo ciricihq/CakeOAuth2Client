@@ -17,8 +17,8 @@ class OAuth2AuthenticateTest extends TestCase
     public function testGetAccessToken()
     {
         $user_login = [
-            'username' => 'apitest',
-            'password' => 'hola'
+            'username' => 'test',
+            'password' => '1234'
         ];
 
         $access_token_values = $this->oauth_authenticator->getAccessToken($user_login);

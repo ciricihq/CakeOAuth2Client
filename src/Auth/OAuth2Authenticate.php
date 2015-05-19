@@ -8,11 +8,10 @@ use Cake\Network\Http\Client;
 use Cake\Network\Request;
 use Cake\Network\Response;
 use Cake\Event\EventListenerInterface;
-//use Cake\Core\InstanceConfigTrait;
+use Cake\Network\Session;
 
 class OAuth2Authenticate implements EventListenerInterface
 {
-    //use InstanceConfigTrait;
 
     public function authenticate(Request $request, Response $response)
     {
@@ -35,6 +34,11 @@ class OAuth2Authenticate implements EventListenerInterface
 
     public function getUser()
     {
+        $user = Configure::read('Session');
+        if ($user) {
+            return $user;
+        }
+
         return false;
     }
 
