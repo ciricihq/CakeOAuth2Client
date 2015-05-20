@@ -24,6 +24,11 @@ class OAuth2AuthenticateTest extends TestCase
         $access_token_values = $this->oauth_authenticator->getAccessToken($user_login);
 
         $this->assertNotNull($access_token_values);
+
+        // Testing refresh token
+        // $refresh_token_values = $this->oauth_authenticator->getRefreshToken($access_token_values['refresh_token']);
+
+        // $this->assertNotNull($access_token_values);
     }
 
     public function testGetOAuthRoutes()

@@ -12,7 +12,6 @@ use Cake\Network\Session;
 
 class OAuth2Authenticate implements EventListenerInterface
 {
-
     public function authenticate(Request $request, Response $response)
     {
         $user_login['username'] = $request->data['username'];
@@ -57,6 +56,24 @@ class OAuth2Authenticate implements EventListenerInterface
 
         $http = new Client();
         $response = $http->post($routes['base_uri'] . $routes['access_token_path'],
+            $parameters
+        );
+
+        $result = $response->json;
+
+        return $result;
+    }
+
+    public function getRefreshToken($refresh_token)
+    {
+        $result = array();
+        $routes = $this->getOAuthRoutes();
+        $keys = $this->getOAuthKeys();
+
+        $parameters = array_merge($refresh_token, $keys, ['grant_type' => 'refresh_token']);
+
+        $http = new Client();
+        $response = $http->post($routes['base_uri'] . $routes['refresh_token_path'],
             $parameters
         );
 

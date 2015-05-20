@@ -3,6 +3,7 @@
 namespace OAuth2Client\Controller;
 
 use App\Controller\AppController;
+use OAuth2Client\Auth\OAuth2Authenticate;
 
 class AuthController extends AppController
 {
@@ -22,6 +23,14 @@ class AuthController extends AppController
                 );
             }
         }
+    }
+
+    public function refreshToken($refresh_token)
+    {
+        $this->layout = "ajax.ctp";
+
+        $oauth2_auth = new OAuth2Authenticate();
+        $this->set($oauth2_auth);
     }
 
     public function isAuthorized()
