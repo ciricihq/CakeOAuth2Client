@@ -10,6 +10,6 @@ Configure::write('App.OAuth2Client.routes', [
 ]);
 
 Configure::write('App.OAuth2Client.keys', [
-    'client_id' => '5_g9kl415lewgscs44oocggwkcos4oswc0sos4sgcw4wgwg4koc',
-    'client_secret' => 'whmp9v4ab280o80kksws4480kk84cw0g0kwwssso84kok8cw4',
+    'client_id' => '2_3cvbgyjmbkqo4kcgc44gsko8g8oogk48g4ckscgkssk4cgokkg',
+    'client_secret' => '4z7ya3uonlgcskok4gokccgw0w8sg8gkgkwso0s84g4kk8ocko',
 ]);
