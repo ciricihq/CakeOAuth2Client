@@ -25,6 +25,12 @@ class AuthController extends AppController
         }
     }
 
+    public function logout()
+    {
+        $this->Auth->setUser(null);
+        return $this->redirect($this->Auth->redirectUrl('/'));
+    }
+
     public function refreshToken($refresh_token)
     {
         $this->layout = "ajax.ctp";
