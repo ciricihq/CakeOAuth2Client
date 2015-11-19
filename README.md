@@ -1,5 +1,7 @@
 # OAuth2Client plugin for CakePHP
 
+This plugin provides OAuth2 Password grant scenario to your cake3 projects.
+
 ## Installation
 
 You can install this plugin into your CakePHP application using [composer](http://getcomposer.org).
@@ -7,5 +9,5 @@ You can install this plugin into your CakePHP application using [composer](http:
 The recommended way to install composer packages is:
 
 ```
-composer require your-name-here/OAuth2Client
+composer require ciricihq/oauth2-client
 ```
