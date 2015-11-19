@@ -48,3 +48,58 @@ You can add them in your app.php configuration file in the App array.
     ]
 ],
 ```
+
+To enable the plugin add the next line in your bootstrap.php
+
+```php
+Plugin::load('OAuth2Client', ['bootstrap' => true, 'routes' => true]);
+```
+
+In your AppController.php you should have the next codes in order to access your generated AccessToken.
+
+```php
+    public function initialize()
+    {
+        parent::initialize();
+
+        $this->loadComponent('Flash');
+
+        $this->loadComponent('Auth', [
+            'loginAction' => [
+                'controller' => 'AuthController',
+                'action' => 'login'
+            ],
+            'loginRedirect' => [
+                'plugin' => 'OAuth2Client',
+                'controller' => 'Auth',
+                'action' => 'login'
+            ],
+            'authenticate' => [
+                'OAuth2Client.OAuth2'
+            ],
+            'authorize' => ['Controller']
+        ]);
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        $authUser = $this->Auth->user();
+
+        // Here you are setting AccessToken, RefresToken and ExpiresIn to all the controllers and views in order to handle later
+        // you can set cookies or whatever you need
+        $this->set('authUser', $authUser);
+        $this->set('access_token', $authUser['access_token']);
+        $this->set('refresh_token', $authUser['refresh_token']);
+        $this->set('token_expires', $authUser['expires_in']);
+    }
+
+    public function isAuthorized()
+    {
+        $user = $this->Auth->user();
+        if (isset($user['access_token'])) {
+            return true;
+        }
+
+        return false;
+    }
+```
