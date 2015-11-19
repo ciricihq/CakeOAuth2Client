@@ -1,5 +1,5 @@
 {
-    "name": "ciricihq/oauth2-client",
+    "name": "ciricihq/cake-oauth2-client",
     "description": "OAuth2Client plugin for CakePHP",
     "type": "cakephp-plugin",
     "require": {
