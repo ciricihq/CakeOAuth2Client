@@ -70,7 +70,7 @@ class OAuth2Authenticate implements EventListenerInterface
         $routes = $this->getOAuthRoutes();
         $keys = $this->getOAuthKeys();
 
-        $parameters = array_merge($refresh_token, $keys, ['grant_type' => 'refresh_token']);
+        $parameters = array_merge(['refresh_token' => $refresh_token], $keys, ['grant_type' => 'refresh_token']);
 
         $http = new Client();
         $response = $http->post($routes['base_uri'] . $routes['refresh_token_path'],

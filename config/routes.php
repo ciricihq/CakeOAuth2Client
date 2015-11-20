@@ -10,6 +10,10 @@ Router::plugin('OAuth2Client',['path' => '/oauth2'], function ($routes) {
         ['controller' => 'Auth', 'action' => 'logout']
     );
 
+    $routes->connect('/refreshToken',
+        ['controller' => 'Auth', 'action' => 'refreshToken']
+    );
+
     $routes->fallbacks('InflectedRoute');
 });
 
